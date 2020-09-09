@@ -14,3 +14,8 @@ jobs:
       - run:
           command: echo 'test step'
           name: Test
+
+workflows:
+  build-test-deploy:
+    jobs:
+      - build
