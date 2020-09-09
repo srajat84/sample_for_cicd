@@ -44,9 +44,11 @@ jobs:
           command: ls
       - deploy:
           name: Deploy artifacts
-          command: echo 'deploying....'
+          command: |
+            - mkdir deploy
+            - cp package.tar deploy/
       - store_artifacts:
-          path: ./*.tar
+          path: deploy
 
 workflows:
   build-test-deploy:
