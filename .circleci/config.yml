@@ -50,7 +50,7 @@ jobs:
 workflows:
   build-test-deploy:
     jobs:
-      - hello/hello-build:
+      - hello-build/hello-build:
           name: hello_build
       - build:
           requires:
