@@ -13,8 +13,8 @@ jobs:
       - checkout:
           path: ~/project
       - run:
-          command: sudo chown -R circleci:circleci ~/project/ && ./ci/setup.sh
-          name: Test setup
+          command: ls -al && sudo chown -R circleci:circleci ~/project/ && ls- al && ./ci/setup.sh
+          name:
       - run:
           command: ./ci/run_tests.sh
           name: Run tests
