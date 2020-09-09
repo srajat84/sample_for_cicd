@@ -41,13 +41,13 @@ jobs:
           name: Content to deploy
           command: ls
       - deploy:
-          name: Build and Deploy Image
+          name: Deploy artifacts
           command: echo 'deploying....'
 workflows:
   build-test-deploy:
     jobs:
       - build:
-          name: build_job
+          name: build_test
       - deploy:
           requires:
-            - build_job
+            - build_test
