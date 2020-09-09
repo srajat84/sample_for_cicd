@@ -45,8 +45,8 @@ jobs:
       - deploy:
           name: Deploy artifacts
           command: |
-            - mkdir deploy
-            - cp package.tar deploy/
+              mkdir deploy
+              cp package.tar deploy/
       - store_artifacts:
           path: deploy
 
