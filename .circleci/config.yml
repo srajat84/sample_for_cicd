@@ -10,17 +10,6 @@ executors:
       - image: circleci/python:3.7-node-browsers-legacy
 
 jobs:
-
-  say-hello:
-    executor: python_docker
-    parameters:
-      to:
-        default: ${CIRCLE_USERNAME}
-        type: string
-    steps:
-      - hello-triggerer:
-          to: <<parameters.to>>
-
   build:
     executor: python_docker
     steps:
@@ -62,10 +51,10 @@ jobs:
 workflows:
   build-test-deploy:
     jobs:
-      - say-hello:
+      - hello/hello-build:
       - build:
           requires:
-            - say-hello
+            - hello/hello-build
       - deploy:
           requires:
             - build
