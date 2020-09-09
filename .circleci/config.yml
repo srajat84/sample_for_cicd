@@ -31,7 +31,22 @@ jobs:
           root: ~/project
           paths:
             - ./*.tar
+
+  deploy:
+    executor: node
+    steps:
+      - attach_workspace:
+          at: ~/project
+      - run:
+          name: Content to deploy
+          command: ls
+      - deploy:
+          name: Build and Deploy Image
+          command: echo 'deploying....'
 workflows:
   build-test-deploy:
     jobs:
       - build
+      - deploy:
+        requires:
+          - build
