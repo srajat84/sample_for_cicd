@@ -24,6 +24,13 @@ jobs:
           name: Run tests
       - store_artifacts:
           path: reports
+      - run:
+          command: tar -cvf package.tar .
+          name: Create Package
+      - persist_to_workspace:
+          root: ~/project
+          paths:
+            - ./*.tar
 workflows:
   build-test-deploy:
     jobs:
