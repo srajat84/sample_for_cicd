@@ -35,7 +35,7 @@ jobs:
             - ./*.tar
 
   deploy:
-    executor: node
+    executor: python_docker
     steps:
       - attach_workspace:
           at: ~/project
