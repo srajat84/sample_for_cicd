@@ -1,6 +1,5 @@
 version: 2.1
 
-
 orbs:
   hello-build: circleci/hello-build@0.0.9
 
@@ -52,9 +51,10 @@ workflows:
   build-test-deploy:
     jobs:
       - hello/hello-build:
+          name: hello_build
       - build:
           requires:
-            - hello/hello-build
+            - hello_build
       - deploy:
           requires:
             - build
