@@ -1,14 +1,28 @@
 version: 2.1
 
 
+orbs:
+  hello-build: circleci/hello-build@0.0.9
+
 executors:
-  node:
+  python_docker:
     docker:
       - image: circleci/python:3.7-node-browsers-legacy
 
 jobs:
+
+  say-hello:
+    executor: python_docker
+    parameters:
+      to:
+        default: ${CIRCLE_USERNAME}
+        type: string
+    steps:
+      - hello-triggerer:
+          to: <<parameters.to>>
+
   build:
-    executor: node
+    executor: python_docker
     steps:
       - checkout:
           path: ~/project
@@ -43,11 +57,15 @@ jobs:
       - deploy:
           name: Deploy artifacts
           command: echo 'deploying....'
+
+
 workflows:
   build-test-deploy:
     jobs:
+      - say-hello:
       - build:
-          name: build_test
+          requires:
+            - say-hello
       - deploy:
           requires:
-            - build_test
+            - build
