@@ -18,7 +18,7 @@ jobs:
             sudo chown -R circleci:circleci .
             chmod -R +rwx ./ci
             ./ci/setup.sh
-          name:
+          name: Setup
       - run:
           command: ./ci/run_tests.sh
           name: Run tests
