@@ -45,7 +45,9 @@ jobs:
       - deploy:
           name: Deploy artifacts
           command: echo 'deploying....'
-
+      - store_artifacts:
+          paths:
+            - ./*.tar
 
 workflows:
   build-test-deploy:
