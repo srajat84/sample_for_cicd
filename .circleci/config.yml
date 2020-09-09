@@ -22,6 +22,8 @@ jobs:
       - run:
           command: ./ci/run_tests.sh
           name: Run tests
+      - store_artifacts:
+          path: reports
 workflows:
   build-test-deploy:
     jobs:
