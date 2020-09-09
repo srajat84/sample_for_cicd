@@ -1,0 +1,16 @@
+version: 2.1
+
+
+executors:
+  node:
+    docker:
+      - image: circleci/python:3.7-node-browsers-legacy
+
+jobs:
+  build:
+    steps:
+      - checkout:
+          path: ~/project
+      - run:
+          command: echo 'test step'
+          name: Test
