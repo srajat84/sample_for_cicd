@@ -13,9 +13,11 @@ jobs:
       - checkout:
           path: ~/project
       - run:
-          command: echo 'test step'
-          name: Test
-
+          command: ./ci/setup.sh
+          name: Test setup
+      - run:
+          command: ./ci/run_tests.sh
+          name: Run tests
 workflows:
   build-test-deploy:
     jobs:
